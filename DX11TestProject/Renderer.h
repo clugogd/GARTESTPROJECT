@@ -10,13 +10,13 @@
 #pragma comment(lib, "d3dcompiler.lib")
 using namespace DirectX;
 
-#define SCREEN_WIDTH 1440
-#define SCREEN_HEIGHT 900
+const long SCREEN_WIDTH = 1440;
+const long SCREEN_HEIGHT = 900;
 
-struct VERTEX 
+struct TVERTEX 
 {
-	VERTEX() {}
-	VERTEX(float x, float y, float z, float r, float g, float b, float a) : pos(x, y, z),Color(r,g,b,a) {}
+	TVERTEX() {}
+	TVERTEX(float x, float y, float z, float r, float g, float b, float a) : pos(x, y, z),Color(r,g,b,a) {}
 	XMFLOAT3 pos;
 	XMFLOAT4 Color;
 };
@@ -26,11 +26,11 @@ struct VERTEX
 //	{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 }
 //};
 
-class Renderer
+class CRenderer
 {
 public:
-	Renderer();
-	~Renderer();
+	CRenderer();
+	~CRenderer();
 
 	void Init(HWND hwnd);
 	void Shutdown();

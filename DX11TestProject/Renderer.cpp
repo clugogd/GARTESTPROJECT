@@ -1,27 +1,27 @@
 #include "Renderer.h"
 
-Renderer::Renderer()
+CRenderer::CRenderer()
 {
 }
 
 
-Renderer::~Renderer()
+CRenderer::~CRenderer()
 {
 }
 
-void Renderer::Init(HWND hwnd)
+void CRenderer::Init(HWND hwnd)
 {
 	InitD3D(hwnd);
 }
-void Renderer::Shutdown()
+void CRenderer::Shutdown()
 {
 	CleanD3D();
 }
-void Renderer::Update()
+void CRenderer::Update()
 {
 	RenderFrame();
 }
-void Renderer::InitD3D(HWND hWnd)
+void CRenderer::InitD3D(HWND hWnd)
 {
 	// create a struct to hold information about the swap chain
 	DXGI_SWAP_CHAIN_DESC scd;
@@ -84,7 +84,7 @@ void Renderer::InitD3D(HWND hWnd)
 	InitPipeline();
 	InitGraphics();
 }
-void Renderer::CleanD3D()
+void CRenderer::CleanD3D()
 {
 	swapchain->SetFullscreenState(FALSE, NULL);
 
@@ -101,14 +101,14 @@ void Renderer::CleanD3D()
 	context->Release();
 }
 
-void Renderer::RenderFrame()
+void CRenderer::RenderFrame()
 {
 	// clear the back buffer to a deep blue
 	XMFLOAT4 color{ 0.0f, 0.2f, 0.4f, 1.0f };
 	context->ClearRenderTargetView(backbuffer, (FLOAT*)&color);
 
 	// do 3D rendering on the back buffer here
-	UINT stride = sizeof(VERTEX);
+	UINT stride = sizeof(TVERTEX);
 	UINT offset = 0;
 
 	context->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
@@ -120,10 +120,10 @@ void Renderer::RenderFrame()
 	swapchain->Present(0, 0);
 }
 
-void Renderer::InitGraphics()
+void CRenderer::InitGraphics()
 {
 	// create a triangle using the VERTEX struct
-	VERTEX OurVertices[] =
+	TVERTEX tVertices[] =
 	{
 		{ 0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f },
 		{ 0.45f, -0.5, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f },
@@ -136,7 +136,7 @@ void Renderer::InitGraphics()
 	ZeroMemory(&bd, sizeof(bd));
 
 	bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
-	bd.ByteWidth = sizeof(VERTEX) * 3;             // size is the VERTEX struct * 3
+	bd.ByteWidth = sizeof(TVERTEX) * 3;             // size is the VERTEX struct * 3
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
 	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
 
@@ -146,12 +146,12 @@ void Renderer::InitGraphics()
 												   // copy the vertices into the buffer
 	D3D11_MAPPED_SUBRESOURCE ms;
 	context->Map(pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);    // map the buffer
-	memcpy(ms.pData, OurVertices, sizeof(OurVertices));                 // copy the data
+	memcpy(ms.pData, tVertices, sizeof(tVertices));                 // copy the data
 	context->Unmap(pVBuffer, NULL);                                      // unmap the buffer
 
 }
 
-void Renderer::InitPipeline()
+void CRenderer::InitPipeline()
 {
 	// load and compile the two shaders
 	hr = D3DCompileFromFile(L"Effects.fx", 0, 0, "VS", "vs_4_0", 0, 0, &pVSBuffer, NULL);

@@ -2,11 +2,11 @@
 
 
 
-Animation::Animation()
+CAnimation::CAnimation()
 {
 }
 
 
-Animation::~Animation()
+CAnimation::~CAnimation()
 {
 }

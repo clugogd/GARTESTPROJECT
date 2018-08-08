@@ -2,11 +2,11 @@
 
 
 
-Physics::Physics()
+CPhysics::CPhysics()
 {
 }
 
 
-Physics::~Physics()
+CPhysics::~CPhysics()
 {
 }

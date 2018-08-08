@@ -1,11 +1,11 @@
 #ifndef _PHYSICS_H_
 #define _PHYSICS_H_
 
-class Physics
+class CPhysics
 {
 public:
-	Physics();
-	~Physics();
+	CPhysics();
+	~CPhysics();
 
 	void Init() {}
 	void Update() {}

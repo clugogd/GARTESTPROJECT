@@ -2,11 +2,11 @@
 
 
 
-SceneManager::SceneManager()
+CSceneManager::CSceneManager()
 {
 }
 
 
-SceneManager::~SceneManager()
+CSceneManager::~CSceneManager()
 {
 }

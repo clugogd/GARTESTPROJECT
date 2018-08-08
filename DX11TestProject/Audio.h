@@ -1,11 +1,11 @@
 #ifndef _AUDIO_H_
 #define _AUDIO_H_
 
-class Audio
+class CAudio
 {
 public:
-	Audio();
-	~Audio();
+	CAudio();
+	~CAudio();
 
 	void Init() {}
 	void Update() {}

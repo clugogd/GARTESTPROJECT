@@ -1,11 +1,11 @@
 #ifndef _GAMEMODE_H_
 #define _GAMEMODE_H_
 
-class GameMode
+class CGameMode
 {
 public:
-	GameMode();
-	~GameMode();
+	CGameMode();
+	~CGameMode();
 
 	void Init() {}
 	void Update() {}

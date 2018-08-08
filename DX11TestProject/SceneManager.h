@@ -1,11 +1,11 @@
 #ifndef _SCENEMANAGER_H_
 #define _SCENEMANAGER_H_
 
-class SceneManager
+class CSceneManager
 {
 public:
-	SceneManager();
-	~SceneManager();
+	CSceneManager();
+	~CSceneManager();
 
 	void Init() {}
 	void Update() {}

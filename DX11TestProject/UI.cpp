@@ -2,11 +2,11 @@
 
 
 
-UI::UI()
+CUI::CUI()
 {
 }
 
 
-UI::~UI()
+CUI::~CUI()
 {
 }

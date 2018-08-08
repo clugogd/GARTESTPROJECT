@@ -133,29 +133,35 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Store.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Store.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
