@@ -93,4 +93,14 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Effects.fx">
+      <Filter>Resource Files</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader.shader">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
