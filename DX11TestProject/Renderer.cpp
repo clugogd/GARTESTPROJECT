@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include <D3DX10math.h>
 
 Renderer::Renderer()
 {
@@ -36,8 +35,12 @@ void Renderer::InitD3D(HWND hWnd)
 	scd.BufferDesc.Width = SCREEN_WIDTH;
 	scd.BufferDesc.Height = SCREEN_HEIGHT;
 	scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;      // how swap chain is to be used
-	scd.OutputWindow = hWnd;                                // the window to be used
+	scd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
+	scd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
+
 	scd.SampleDesc.Count = 4;                               // how many multisamples
+	scd.SampleDesc.Quality = 0;
+	scd.OutputWindow = hWnd;                                // the window to be used
 	scd.Windowed = TRUE;                                    // windowed/full-screen mode
 	scd.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 															// create a device, device context and swap chain using the information in the scd struct
@@ -89,6 +92,8 @@ void Renderer::CleanD3D()
 	pLayout->Release();
 	pVS->Release();
 	pPS->Release();
+	pVSBuffer->Release();
+	pPSBuffer->Release();
 	pVBuffer->Release();
 	swapchain->Release();
 	backbuffer->Release();
@@ -99,8 +104,8 @@ void Renderer::CleanD3D()
 void Renderer::RenderFrame()
 {
 	// clear the back buffer to a deep blue
-	float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
-	context->ClearRenderTargetView(backbuffer, color);
+	XMFLOAT4 color{ 0.0f, 0.2f, 0.4f, 1.0f };
+	context->ClearRenderTargetView(backbuffer, (FLOAT*)&color);
 
 	// do 3D rendering on the back buffer here
 	UINT stride = sizeof(VERTEX);
@@ -120,9 +125,9 @@ void Renderer::InitGraphics()
 	// create a triangle using the VERTEX struct
 	VERTEX OurVertices[] =
 	{
-		{ 0.0f, 0.5f, 0.0f, D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f) },
-	{ 0.45f, -0.5, 0.0f, D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f) },
-	{ -0.45f, -0.5f, 0.0f, D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f) }
+		{ 0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f },
+		{ 0.45f, -0.5, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f },
+		{ -0.45f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f }
 	};
 
 
@@ -149,13 +154,12 @@ void Renderer::InitGraphics()
 void Renderer::InitPipeline()
 {
 	// load and compile the two shaders
-	ID3D10Blob *VS, *PS;
-	D3DX11CompileFromFileW(L"shaders.shader", 0, 0, "VShader", "vs_4_0", 0, 0, 0, &VS, 0, 0);
-	D3DX11CompileFromFileW(L"shaders.shader", 0, 0, "PShader", "ps_4_0", 0, 0, 0, &PS, 0, 0);
+	hr = D3DCompileFromFile(L"Effects.fx", 0, 0, "VS", "vs_4_0", 0, 0, &pVSBuffer, NULL);
+	hr = D3DCompileFromFile(L"Effects.fx", 0, 0, "PS", "ps_4_0", 0, 0, &pPSBuffer, NULL);
 
 	// encapsulate both shaders into shader objects
-	device->CreateVertexShader(VS->GetBufferPointer(), VS->GetBufferSize(), NULL, &pVS);
-	device->CreatePixelShader(PS->GetBufferPointer(), PS->GetBufferSize(), NULL, &pPS);
+	hr = device->CreateVertexShader(pVSBuffer->GetBufferPointer(), pVSBuffer->GetBufferSize(), NULL, &pVS);
+	hr = device->CreatePixelShader(pPSBuffer->GetBufferPointer(), pPSBuffer->GetBufferSize(), NULL, &pPS);
 
 	// set the shader objects
 	context->VSSetShader(pVS, 0, 0);
@@ -168,6 +172,6 @@ void Renderer::InitPipeline()
 	{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 	};
 
-	device->CreateInputLayout(ied, 2, VS->GetBufferPointer(), VS->GetBufferSize(), &pLayout);
+	device->CreateInputLayout(ied, 2, pVSBuffer->GetBufferPointer(), pVSBuffer->GetBufferSize(), &pLayout);
 	context->IASetInputLayout(pLayout);
 }
