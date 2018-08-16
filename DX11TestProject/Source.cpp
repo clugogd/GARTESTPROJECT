@@ -11,12 +11,9 @@
 #include "SceneManager.h"
 #include "UI.h"
 
-<<<<<<< HEAD
 //	STL includes
 #include <iostream>
 #include <string>
-=======
->>>>>>> 9ca603a4c81b6221ff0a521f38e19185894f26ff
 
 CAnimation *animator = nullptr;
 CAudio *audio = nullptr;
@@ -26,13 +23,10 @@ CPhysics* physics = nullptr;
 CRenderer* renderer = nullptr;
 CSceneManager* sceneManager = nullptr;
 CUI* canvas = nullptr;
-<<<<<<< HEAD
  
 LPCWSTR g_WindowClassName = L"DirectXWindowClass";
 LPCWSTR g_WindowName = L"DirectX Template";
 const BOOL g_EnableVSync = TRUE;
-=======
->>>>>>> 9ca603a4c81b6221ff0a521f38e19185894f26ff
 
 // the handle for the window, filled by a function
 HWND g_WindowHandle = 0;
@@ -247,11 +241,7 @@ void Init()
 	physics = new CPhysics();
 	physics->Init();
 	renderer = new CRenderer();
-<<<<<<< HEAD
 	renderer->Init(g_WindowHandle);
-=======
-	renderer->Init(hWnd);
->>>>>>> 9ca603a4c81b6221ff0a521f38e19185894f26ff
 	sceneManager = new CSceneManager();
 	sceneManager->Init();
 	canvas = new CUI();

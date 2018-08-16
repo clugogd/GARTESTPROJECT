@@ -17,7 +17,6 @@
 
 using namespace DirectX;
 
-<<<<<<< HEAD
 //	Safely release a COM object
 template<typename T>
 inline void SafeRelease(T& ptr)
@@ -35,19 +34,10 @@ ShaderClass* LoadShader(const std::wstring&filename, const std::string& entryPoi
 const long SCREEN_WIDTH = 1440;
 const long SCREEN_HEIGHT = 900;
 
-struct TVERTEX
-{
-	TVERTEX() {}
-	TVERTEX(XMFLOAT3 position, XMFLOAT4 color) : pos(position), Color(color) {}
-=======
-const long SCREEN_WIDTH = 1440;
-const long SCREEN_HEIGHT = 900;
-
 struct TVERTEX 
 {
 	TVERTEX() {}
-	TVERTEX(float x, float y, float z, float r, float g, float b, float a) : pos(x, y, z),Color(r,g,b,a) {}
->>>>>>> 9ca603a4c81b6221ff0a521f38e19185894f26ff
+	TVERTEX(XMFLOAT3 position, XMFLOAT4 color) : pos(position),Color(color) {}
 	XMFLOAT3 pos;
 	XMFLOAT4 Color;
 };

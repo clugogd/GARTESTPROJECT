@@ -1,7 +1,7 @@
 #ifndef _AUDIO_H_
 #define _AUDIO_H_
 
-<<<<<<< HEAD
+
 #include <AK/SoundEngine/Common/AkTypes.h>
 
 #include <AK/SoundEngine/Common/AkMemoryMgr.h>		// Memory Manager
@@ -19,8 +19,6 @@
 #include <AK/Comm/AkCommunication.h>
 #endif
 
-=======
->>>>>>> 9ca603a4c81b6221ff0a521f38e19185894f26ff
 class CAudio
 {
 public:
