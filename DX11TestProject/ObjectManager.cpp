@@ -2,11 +2,11 @@
 
 
 
-ObjectManager::ObjectManager()
+CObjectManager::CObjectManager()
 {
 }
 
 
-ObjectManager::~ObjectManager()
+CObjectManager::~CObjectManager()
 {
 }

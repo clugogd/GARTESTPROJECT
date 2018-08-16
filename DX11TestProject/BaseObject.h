@@ -1,11 +1,11 @@
 #ifndef _BASEOBJECT_H_
 #define _BASEOBJECT_H_
 
-class BaseObject
+class CBaseObject
 {
 public:
-	BaseObject();
-	~BaseObject();
+	CBaseObject();
+	~CBaseObject();
 
 public:
 };

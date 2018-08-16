@@ -2,11 +2,11 @@
 
 
 
-BaseObject::BaseObject()
+CBaseObject::CBaseObject()
 {
 }
 
 
-BaseObject::~BaseObject()
+CBaseObject::~CBaseObject()
 {
 }

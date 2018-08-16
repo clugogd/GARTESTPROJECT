@@ -2,12 +2,12 @@
 #define _EFFECT_H_
 
 #include "BaseObject.h"
-class Effect :
-	public BaseObject
+class CEffect :
+	public CBaseObject
 {
 public:
-	Effect();
-	~Effect();
+	CEffect();
+	~CEffect();
 
 	void Init() {}
 	void Update() {}

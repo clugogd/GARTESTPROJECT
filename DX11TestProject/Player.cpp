@@ -2,11 +2,11 @@
 
 
 
-Player::Player()
+CPlayer::CPlayer()
 {
 }
 
 
-Player::~Player()
+CPlayer::~CPlayer()
 {
 }

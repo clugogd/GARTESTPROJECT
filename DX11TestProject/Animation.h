@@ -1,12 +1,15 @@
-#pragma once
-class Animation
+#ifndef _ANIMATION_H_
+#define _ANIMATION_H_
+
+class CAnimation
 {
 public:
-	Animation();
-	~Animation();
+	CAnimation();
+	~CAnimation();
 
 	void Init() {}
 	void Update() {}
 	void Shutdown() {}
 };
 
+#endif

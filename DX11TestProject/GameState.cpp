@@ -2,11 +2,11 @@
 
 
 
-GameState::GameState()
+CGameState::CGameState()
 {
 }
 
 
-GameState::~GameState()
+CGameState::~CGameState()
 {
 }

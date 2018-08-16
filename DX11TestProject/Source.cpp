@@ -11,18 +11,26 @@
 #include "SceneManager.h"
 #include "UI.h"
 
+//	STL includes
+#include <iostream>
+#include <string>
 
-Animation *animator = nullptr;
-Audio *audio = nullptr;
-GameState* gameState = nullptr;
-ObjectManager* heirarchy = nullptr;
-Physics* physics = nullptr;
-Renderer* renderer = nullptr;
-SceneManager* sceneManager = nullptr;
-UI* canvas = nullptr;
+CAnimation *animator = nullptr;
+CAudio *audio = nullptr;
+CGameState* gameState = nullptr;
+CObjectManager* heirarchy = nullptr;
+CPhysics* physics = nullptr;
+CRenderer* renderer = nullptr;
+CSceneManager* sceneManager = nullptr;
+CUI* canvas = nullptr;
+ 
+LPCWSTR g_WindowClassName = L"DirectXWindowClass";
+LPCWSTR g_WindowName = L"DirectX Template";
+const BOOL g_EnableVSync = TRUE;
 
 // the handle for the window, filled by a function
-HWND hWnd;
+HWND g_WindowHandle = 0;
+
 // this struct holds information for the window class
 WNDCLASSEXW wc;
 
@@ -52,7 +60,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	wc.hInstance = hInstance;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.hbrBackground = (HBRUSH)COLOR_WINDOW;
-	wc.lpszClassName = L"WindowClass1";
+	wc.lpszClassName = g_WindowClassName;
 
 	// register the window class
 	RegisterClassExW(&wc);
@@ -61,9 +69,9 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	AdjustWindowRect(&wr, WS_POPUP, FALSE);
 
 	// create the window and use the result as the handle
-	hWnd = CreateWindowExW(NULL,
-		L"WindowClass1",    // name of the window class
-		L"Our First Windowed Program",   // title of the window
+	g_WindowHandle = CreateWindowExW(NULL,
+		g_WindowClassName,    // name of the window class
+		g_WindowName,   // title of the window
 		WS_POPUP,    // window style
 		10,    // x-position of the window
 		10,    // y-position of the window
@@ -75,7 +83,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		NULL);    // used with multiple windows, NULL
 
 				  // display the window on the screen
-	ShowWindow(hWnd, nCmdShow);
+	ShowWindow(g_WindowHandle, nCmdShow);
 
 	// enter the main loop:
 
@@ -112,7 +120,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	Shutdown();
 
 	// return this part of the WM_QUIT message to Windows
-	return msg.wParam;
+	return (int)msg.wParam;
 }
 
 // this is the main message handler for the program
@@ -222,20 +230,20 @@ void Shutdown()
 
 void Init()
 {
-	animator = new Animation();
+	animator = new CAnimation();
 	animator->Init();
-	audio = new Audio();
+	audio = new CAudio();
 	audio->Init();
-	gameState = new GameState();
+	gameState = new CGameState();
 	gameState->Init();
-	heirarchy = new ObjectManager();
+	heirarchy = new CObjectManager();
 	heirarchy->Init();
-	physics = new Physics();
+	physics = new CPhysics();
 	physics->Init();
-	renderer = new Renderer();
-	renderer->Init(hWnd);
-	sceneManager = new SceneManager();
+	renderer = new CRenderer();
+	renderer->Init(g_WindowHandle);
+	sceneManager = new CSceneManager();
 	sceneManager->Init();
-	canvas = new UI();
+	canvas = new CUI();
 	canvas->Init();
 }
