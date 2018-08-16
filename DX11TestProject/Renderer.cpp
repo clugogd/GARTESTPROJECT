@@ -161,6 +161,10 @@ void CRenderer::InitGraphics()
 	m_d3dContext->Map(m_pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);    // map the buffer
 	memcpy(ms.pData, tVertices, sizeof(tVertices));                 // copy the data
 	m_d3dContext->Unmap(m_pVBuffer, NULL);                                      // unmap the buffer
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of ef4af2d... Merge branch 'Renderer' of https://github.com/clugogd/GARTESTPROJECT into Renderer
 }
 
 void CRenderer::InitPipeline()

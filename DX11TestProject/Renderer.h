@@ -34,10 +34,17 @@ ShaderClass* LoadShader(const std::wstring&filename, const std::string& entryPoi
 const long SCREEN_WIDTH = 1440;
 const long SCREEN_HEIGHT = 900;
 
+<<<<<<< HEAD
 struct TVERTEX 
 {
 	TVERTEX() {}
 	TVERTEX(XMFLOAT3 position, XMFLOAT4 color) : pos(position),Color(color) {}
+=======
+struct TVERTEX
+{
+	TVERTEX() {}
+	TVERTEX(XMFLOAT3 position, XMFLOAT4 color) : pos(position), Color(color) {}
+>>>>>>> parent of ef4af2d... Merge branch 'Renderer' of https://github.com/clugogd/GARTESTPROJECT into Renderer
 	XMFLOAT3 pos;
 	XMFLOAT4 Color;
 };

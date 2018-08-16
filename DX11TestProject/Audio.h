@@ -1,7 +1,10 @@
 #ifndef _AUDIO_H_
 #define _AUDIO_H_
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of ef4af2d... Merge branch 'Renderer' of https://github.com/clugogd/GARTESTPROJECT into Renderer
 #include <AK/SoundEngine/Common/AkTypes.h>
 
 #include <AK/SoundEngine/Common/AkMemoryMgr.h>		// Memory Manager
