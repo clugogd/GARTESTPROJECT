@@ -48,3 +48,7 @@ TestResult.xml
 Version.cs
 Version.h
 Version.cpp
+
+# CSH Excludes
+*.csh
+*.cso
