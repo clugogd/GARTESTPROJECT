@@ -122,7 +122,11 @@ void CRenderer::RenderFrame()
 void CRenderer::InitGraphics()
 {
 	// create a triangle using the VERTEX struct
+<<<<<<< HEAD
 	TVERTEX tVertices[8] =
+=======
+	TVERTEX tVertices[] =
+>>>>>>> 9ca603a4c81b6221ff0a521f38e19185894f26ff
 	{
 		{ XMFLOAT3(-1.0f, -1.0f, -1.0f), XMFLOAT4(0.0f, 0.0f, 0.0f,1.0) }, // 0
 	{ XMFLOAT3(-1.0f,  1.0f, -1.0f), XMFLOAT4(0.0f, 1.0f, 0.0f,1.0) }, // 1
@@ -158,9 +162,15 @@ void CRenderer::InitGraphics()
 
 												   // copy the vertices into the buffer
 	D3D11_MAPPED_SUBRESOURCE ms;
+<<<<<<< HEAD
 	m_d3dContext->Map(m_pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);    // map the buffer
 	memcpy(ms.pData, tVertices, sizeof(tVertices));                 // copy the data
 	m_d3dContext->Unmap(m_pVBuffer, NULL);                                      // unmap the buffer
+=======
+	context->Map(pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);    // map the buffer
+	memcpy(ms.pData, tVertices, sizeof(tVertices));                 // copy the data
+	context->Unmap(pVBuffer, NULL);                                      // unmap the buffer
+>>>>>>> 9ca603a4c81b6221ff0a521f38e19185894f26ff
 
 }
 
