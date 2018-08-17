@@ -12,14 +12,14 @@
 #include "UI.h"
 
 
-Animation *animator = nullptr;
-Audio *audio = nullptr;
-GameState* gameState = nullptr;
-ObjectManager* heirarchy = nullptr;
-Physics* physics = nullptr;
-Renderer* renderer = nullptr;
-SceneManager* sceneManager = nullptr;
-UI* canvas = nullptr;
+CAnimation *animator = nullptr;
+CAudio *audio = nullptr;
+CGameState* gameState = nullptr;
+CObjectManager* heirarchy = nullptr;
+CPhysics* physics = nullptr;
+CRenderer* renderer = nullptr;
+CSceneManager* sceneManager = nullptr;
+CUI* canvas = nullptr;
 
 // the handle for the window, filled by a function
 HWND hWnd;
@@ -222,20 +222,20 @@ void Shutdown()
 
 void Init()
 {
-	animator = new Animation();
+	animator = new CAnimation();
 	animator->Init();
-	audio = new Audio();
+	audio = new CAudio();
 	audio->Init();
-	gameState = new GameState();
+	gameState = new CGameState();
 	gameState->Init();
-	heirarchy = new ObjectManager();
+	heirarchy = new CObjectManager();
 	heirarchy->Init();
-	physics = new Physics();
+	physics = new CPhysics();
 	physics->Init();
-	renderer = new Renderer();
+	renderer = new CRenderer();
 	renderer->Init(hWnd);
-	sceneManager = new SceneManager();
+	sceneManager = new CSceneManager();
 	sceneManager->Init();
-	canvas = new UI();
+	canvas = new CUI();
 	canvas->Init();
 }

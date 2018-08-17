@@ -2,11 +2,11 @@
 
 
 
-Audio::Audio()
+CAudio::CAudio()
 {
 }
 
 
-Audio::~Audio()
+CAudio::~CAudio()
 {
 }

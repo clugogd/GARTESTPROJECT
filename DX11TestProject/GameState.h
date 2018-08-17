@@ -1,11 +1,11 @@
 #ifndef _GAMESTATE_H_
 #define _GAMESTATE_H_
 
-class GameState
+class CGameState
 {
 public:
-	GameState();
-	~GameState();
+	CGameState();
+	~CGameState();
 
 	void Init() {}
 	void Update() {}

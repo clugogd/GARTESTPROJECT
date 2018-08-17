@@ -71,19 +71,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryWPath>$(WindowsSDK_MetadataPath);$(DXSDK_DIR)Lib\x64</LibraryWPath>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include;D:\Program Files %28x86%29\Audiokinetic\Wwise 2018.1.0.6714\SDK\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryWPath>$(WindowsSDK_MetadataPath);$(DXSDK_DIR)Lib\x64</LibraryWPath>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include;D:\Program Files %28x86%29\Audiokinetic\Wwise 2018.1.0.6714\SDK\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryWPath>$(WindowsSDK_MetadataPath);$(DXSDK_DIR)Lib\x64</LibraryWPath>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include;D:\Program Files %28x86%29\Audiokinetic\Wwise 2018.1.0.6714\SDK\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryWPath>$(WindowsSDK_MetadataPath);$(DXSDK_DIR)Lib\x64</LibraryWPath>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include;D:\Program Files %28x86%29\Audiokinetic\Wwise 2018.1.0.6714\SDK\include</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

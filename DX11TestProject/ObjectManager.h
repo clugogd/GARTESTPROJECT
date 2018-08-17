@@ -1,11 +1,11 @@
 #ifndef _OBJECTMANAGER_H_
 #define _OBJECTMANAGER_H_
 
-class ObjectManager
+class CObjectManager
 {
 public:
-	ObjectManager();
-	~ObjectManager();
+	CObjectManager();
+	~CObjectManager();
 
 	void Init() {}
 	void Update() {}

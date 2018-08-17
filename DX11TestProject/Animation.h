@@ -1,9 +1,9 @@
 #pragma once
-class Animation
+class CAnimation
 {
 public:
-	Animation();
-	~Animation();
+	CAnimation();
+	~CAnimation();
 
 	void Init() {}
 	void Update() {}
