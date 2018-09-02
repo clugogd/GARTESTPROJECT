@@ -7,9 +7,9 @@ public:
 	CGameState();
 	~CGameState();
 
-	void Init() {}
-	void Update() {}
-	void Shutdown() {}
+	bool Init();
+	bool Update();
+	bool Shutdown();
 };
 
 #endif

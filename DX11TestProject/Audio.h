@@ -1,22 +1,11 @@
 #ifndef _AUDIO_H_
 #define _AUDIO_H_
 
-#include <AK/SoundEngine/Common/AkTypes.h>
-
-#include <AK/SoundEngine/Common/AkMemoryMgr.h>		// Memory Manager
-#include <AK/SoundEngine/Common/AkModule.h>			// Default memory and stream managers
-#include <AK/SoundEngine/Common/IAkStreamMgr.h>		// Streaming Manager
-#include <AK/SoundEngine/Common/AkSoundEngine.h>    // Sound engine
-#include <AK/MusicEngine/Common/AkMusicEngine.h>	// Music Engine
-#include <AK/SoundEngine/Common/AkStreamMgrModule.h>	// AkStreamMgrModule
-#include <AK/SpatialAudio/Common/AkSpatialAudio.h>	// Spatial Audio module
-
-#include <AK/SoundEngine/Common/AkSoundEngine.h>
-#include <AK/IBytes.h>
-
-#ifndef AK_OPTIMIZED
-#include <AK/Comm/AkCommunication.h>
-#endif
+#include <vector>
+using std::vector;
+#include "BaseObject.h"
+#include <DirectXMath.h>
+using namespace DirectX;
 
 class CAudio
 {
@@ -24,9 +13,48 @@ public:
 	CAudio();
 	~CAudio();
 
-	void Init() {}
-	void Update() {}
-	void Shutdown() {}
+	//	Initialize the sound engine
+	bool Init();
+	bool Update();
+	bool Shutdown();
+
+	//	Terminate the sound engine
+	bool Term();
+
+private:
+	//	Entity registration as game object in audio engine
+	void RegisterEntity(CBaseObject* entity, char* in_name = nullptr);
+	void UnregisterEntity(CBaseObject* entity);
+
+	//	Set a wwise state
+	void SendState(int stategroup, int state);
+
+	//	Set a wwise game parameter
+	void SendGameParam(int param, float value);
+
+	//	Set the position of a non-dynamic entity
+	void SendSetPosition(void* entity, float x, float y, float z);
+
+	//	Stop all sounds playing on entity
+	void StopAllSounds(void *entity);
+
+	//	Load bank
+	void LoadBank();
+
+	//	Unload bank
+	void UnloadBank();
+
+	void SoundVolume(int volume);
+	void MusicVolume(int volume);
+	void VoiceVolume(int volume);
+	
+public:
+	vector<CBaseObject*> registeredEntities;
+	int m_nMaxPools;
+	XMFLOAT4X4 listenerTransform;
+
+public:
+	void PlayOneShot(unsigned long eventID);
 };
 
 #endif

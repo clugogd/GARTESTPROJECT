@@ -14,7 +14,7 @@
 #include "Renderer.h"
 #include "SceneManager.h"
 #include "UI.h"
-
+#include "Wwise_IDs.h"
 
 CAnimation *animator = nullptr;
 CAudio *audio = nullptr;
@@ -29,6 +29,45 @@ CUI* canvas = nullptr;
 HWND hWnd;
 // this struct holds information for the window class
 WNDCLASSEXW wc;
+
+/////////////////////////////////////////////////////////////////////////////////
+//                              MEMORY HOOKS SETUP
+//
+//                             ##### IMPORTANT #####
+//
+// These custom alloc/free functions are declared as "extern" in AkMemoryMgr.h
+// and MUST be defined by the game developer.
+/////////////////////////////////////////////////////////////////////////////////
+
+namespace AK
+{
+	void * AllocHook(size_t in_size)
+	{
+		return malloc(in_size);
+	}
+	void FreeHook(void * in_ptr)
+	{
+		free(in_ptr);
+	}
+	void * VirtualAllocHook(
+		void * in_pMemAddress,
+		size_t in_size,
+		DWORD in_dwAllocationType,
+		DWORD in_dwProtect
+	)
+	{
+		return VirtualAlloc(in_pMemAddress, in_size, in_dwAllocationType, in_dwProtect);
+	}
+	void VirtualFreeHook(
+		void * in_pMemAddress,
+		size_t in_size,
+		DWORD in_dwFreeType
+	)
+	{
+		VirtualFree(in_pMemAddress, in_size, in_dwFreeType);
+	}
+}
+
 
 void Init(void);
 void Shutdown(void);
@@ -49,7 +88,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	_CrtDumpMemoryLeaks();
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
-	//_CrtSetBreakAlloc(18);
+	_CrtSetBreakAlloc(154);
 
 	// clear out the window class for use
 	ZeroMemory(&wc, sizeof(WNDCLASSEX));
@@ -115,6 +154,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		{
 			gameState->Update();
 			renderer->Update();
+			audio->Update();
 		}
 	}
 
@@ -136,7 +176,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 		case VK_LEFT:
 
 			// Process the LEFT ARROW key. 
-			
+			audio->PlayOneShot(AK::EVENTS::BOSS_START);
 			break;
 
 		case VK_RIGHT:

@@ -3,12 +3,12 @@
 
 #include "BaseObject.h"
 
-class Player :
-	public BaseObject
+class CPlayer :
+	public CBaseObject
 {
 public:
-	Player();
-	~Player();
+	CPlayer();
+	~CPlayer();
 
 	void Init() {}
 	void Update() {}

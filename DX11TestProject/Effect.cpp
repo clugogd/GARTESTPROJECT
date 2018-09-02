@@ -2,11 +2,11 @@
 
 
 
-Effect::Effect()
+CEffect::CEffect()
 {
 }
 
 
-Effect::~Effect()
+CEffect::~CEffect()
 {
 }
